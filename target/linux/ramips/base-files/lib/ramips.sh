@@ -169,6 +169,9 @@ ramips_board_detect() {
 	*"Planex MZK-750DHP")
 		name="mzk-750dhp"
 		;;
+	*"MUUSE RT5350")
+ 		name="muuse-rt5350"
+ 		;;
 	*"NBG-419N")
 		name="nbg-419n"
 		;;

@@ -449,6 +449,8 @@ Image/Build/Profile/DIR-320-B1=$(call BuildFirmware/Default8M/$(1),$(1),dir-320-
 
 Image/Build/Profile/NBG-419N=$(call BuildFirmware/Default4M/$(1),$(1),nbg-419n,NBG-419N)
 
+Image/Build/Profile/MUUSE-RT5350=$(call BuildFirmware/Default8M/$(1),$(1),muuse-rt5350,MUUSE-RT5350)
+
 Image/Build/Profile/MZKW300NH2=$(call BuildFirmware/Edimax/$(1),$(1),mzk-w300nh2,MZK-W300NH2,$(mzkw300nh2_mtd_size),CSYS,RN52,0x50000,0xc0000)
 
 Image/Build/Profile/NCS601W=$(call BuildFirmware/Default8M/$(1),$(1),ncs601W,NCS601W)
@@ -605,6 +607,7 @@ define Image/Build/Profile/Default
 	$(call Image/Build/Profile/MOFI3500-3GN,$(1))
 	$(call Image/Build/Profile/MPRA1,$(1))
 	$(call Image/Build/Profile/MPRA2,$(1))
+	$(call Image/Build/Profile/MUUSE-RT5350,$(1))
 	$(call Image/Build/Profile/MZKW300NH2,$(1))
 	$(call Image/Build/Profile/NBG-419N,$(1))
 	$(call Image/Build/Profile/NCS601W,$(1))
