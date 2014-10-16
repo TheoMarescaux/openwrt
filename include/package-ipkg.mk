@@ -160,6 +160,11 @@ ifeq ($(DUMP),)
 			DEPENDS=$$$${DEPENDS:+$$$$DEPENDS, }$$$${depend##+}; \
 		done; \
 		[ -z "$$$$DEPENDS" ] || echo "Depends: $$$$DEPENDS"; \
+		CONFLICTS=''; \
+		for conflict in $(CONFLICTS); do \
+			CONFLICTS=$$$${CONFLICTS:+$$$$CONFLICTS, }$$$$conflict; \
+		done; \
+		[ -z "$$$$CONFLICTS" ] || echo "Conflicts: $$$$CONFLICTS"; \
 		$(if $(PROVIDES), echo "Provides: $(PROVIDES)"; ) \
 		echo "Source: $(SOURCE)"; \
 		$(if $(PKG_LICENSE), echo "License: $(PKG_LICENSE)"; ) \
@@ -176,6 +181,7 @@ ifeq ($(DUMP),)
 	chmod 644 $$(IDIR_$(1))/CONTROL/control
 	( \
 		echo "#!/bin/sh"; \
+		echo "[ \"\$$$${IPKG_NO_SCRIPT}\" = \"1\" ] && exit 0"; \
 		echo ". \$$$${IPKG_INSTROOT}/lib/functions.sh"; \
 		echo "default_postinst \$$$$0 \$$$$@"; \
 	) > $$(IDIR_$(1))/CONTROL/postinst

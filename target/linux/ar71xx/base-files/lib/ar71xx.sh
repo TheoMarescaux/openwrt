@@ -152,7 +152,7 @@ tplink_board_detect() {
 		model="TP-Link TL-WA901N/ND"
 		;;
 	"094100"*)
-		if [ "$hwid" == "09410002" -a "$mid" == "00420001" ]; then
+		if [ "$hwid" = "09410002" -a "$mid" = "00420001" ]; then
 			model="Rosewill RNX-N360RT"
 			hwver=""
 		else
@@ -213,6 +213,13 @@ tplink_board_detect() {
 		;;
 	"934100"*)
 		model="NC-LINK SMART-300"
+		;;
+	"c50000"*)
+		model="TP-Link Archer C5"
+		;;
+	"750000"*|\
+	"c70000"*)
+		model="TP-Link Archer C7"
 		;;
 	*)
 		hwver=""
@@ -352,6 +359,9 @@ ar71xx_board_detect() {
 	*"Bullet M")
 		name="bullet-m"
 		;;
+	*"Loco M XW")
+		name="loco-m-xw"
+		;;
 	*"Nanostation M")
 		name="nanostation-m"
 		;;
@@ -429,6 +439,9 @@ ar71xx_board_detect() {
 		;;
 	*PB92)
 		name="pb92"
+		;;
+	*"Qihoo 360 C301")
+		name="qihoo-c301"
 		;;
 	*"RouterBOARD 411/A/AH")
 		name="rb-411"
@@ -744,11 +757,7 @@ ar71xx_board_detect() {
 		;;
 	esac
 
-	case "$machine" in
-	*TL-WR* | *TL-WA* | *TL-MR* | *TL-WD*)
-		tplink_board_detect "$machine"
-		;;
-	esac
+	[ "${machine:0:8}" = 'TP-LINK ' ] && tplink_board_detect "$machine"
 
 	[ -z "$name" ] && name="unknown"
 
