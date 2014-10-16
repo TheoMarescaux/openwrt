@@ -1,7 +1,7 @@
 /dts-v1/;
 
 / {
-	compatible = "muuselabs-uuPlay", "ralink,rt5350-soc";
+	compatible = "muuselabs-Nest", "ralink,rt5350-soc";
 	#address-cells = <1>;
 	#size-cells = <1>;
 
